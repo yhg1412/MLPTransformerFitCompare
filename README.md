@@ -71,9 +71,13 @@ We let the trained models to autoregressively generate data and observe the grap
 
 <img width="740" alt="TSR5F1" src="https://github.com/yhg1412/MLPTransformerFitCompare/assets/17675483/c17c2629-8669-48e3-a82c-af5cc6bb6839">
 
-MLP converged to a constant value as can be seen from below figure.
+~~MLP converged to a constant value as can be seen from below figure.~~ (Wrong)
 
 <img width="753" alt="MLPH2R5F1" src="https://github.com/yhg1412/MLPTransformerFitCompare/assets/17675483/07d9a48a-aed7-4b18-8761-884744241cdd">
+
+2025-04-18 Update: MLP might not "converge"(looks like a constant) to a constant for some frequencies:
+
+<img width="745" alt="MLP_generated_freq70" src="https://github.com/user-attachments/assets/503d2a86-7a38-4369-a4ab-908dd3985608" />
 
 CNN displayed a different shape of periodic curve.
 
@@ -89,11 +93,15 @@ In addition, we also use random initialized data as input to let the trained mod
 <img width="749" alt="TSRandomInputR5F1" src="https://github.com/yhg1412/MLPTransformerFitCompare/assets/17675483/15a1d53e-99d6-4dad-9a74-54ddf4b9cb27">
 
 
-## Conclusion
+## ~~Conclusion~~
+## Observation
 
-In this experiment, Transformer performs better than MLP and CNN in predicting generated sine data.
+~~In this experiment, Transformer performs better than MLP and CNN in predicting generated sine data.~~ 
 
-We also find that when auto-regressivly generate data using trained models, a periodic signal is observed and has a positive correlation with the frequency of training data. One possible explaination to this is related to logistic map.[10] For equation X_n+1 = rX_n(1 - X_n), when r is in certain ranges like slightly beyond 3.54409, from almost all initial conditions of X_0, X_n will approach periodic oscillations among 8 values, then 16, 32, etc. In Transformer, self-attention mechanism will also compute a quadratic term of historical values similar to the above equation.
+In this experiment, in terms of loss, transformer performs better than MLP for this model setup.
+
+
+We also find that when auto-regressivly generate data using trained models, a periodic signal is observed. Further mathamatical study may be needed to explain it. One possible explaination to this is related to logistic map.[10] For equation X_n+1 = rX_n(1 - X_n), when r is in certain ranges like slightly beyond 3.54409, from almost all initial conditions of X_0, X_n will approach periodic oscillations among 8 values, then 16, 32, etc. In Transformer, self-attention mechanism will also compute a quadratic term of historical values similar to the above equation.
 
 ## References
 
